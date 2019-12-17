@@ -49,13 +49,35 @@ return (
             <p>{errors.password}</p>
         )}
         </label>
-        
-    
+        <label htmlFor='terms'>
+            Terms of Service
+            <Field
+                id='terms'
+                type='checkbox'
+                name='terms'
+                checked='{values.terms'
+            />
+        </label>
+            <button type='submit'>Submit</button>
     </Form>
-    
+    {URLSearchParams.map(newUser => {
+        return (
+            <div> 
+                <h2>Name: {newUser.name}</h2>
+                <h2>Email: {newUser.email}</h2>
+            </div>
+        );
+    })}
     
     </div>
+);
 
-
-
-)
+const FormikUserForm = withFormik({
+    mapPropsToValues({ name, email, password, terms })
+    return {
+        name: name || '',
+        email: email || '',
+        password: password || '',
+        terms: terms || '',
+    }
+});
